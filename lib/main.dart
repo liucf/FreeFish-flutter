@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: (_, child) => MaterialApp(
-        title: 'Flutter Demo',
+        title: 'FreeFish',
         theme: AppTheme.appThemeData,
         // initialRoute: "signIn",
         // routes: routesMap,

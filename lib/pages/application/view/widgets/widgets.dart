@@ -1,39 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freefish/common/utils/app_colors.dart';
-import 'package:freefish/common/utils/app_image_res.dart';
-import 'package:freefish/common/widgets/image_widgets.dart';
+import 'package:freefish/pages/category/view/category.dart';
 import 'package:freefish/pages/home/view/home.dart';
+import 'package:freefish/pages/my/view/my.dart';
 
 var bottomItems = <BottomNavigationBarItem>[
-  BottomNavigationBarItem(
-    icon: _bottomContainer(),
-    activeIcon: _bottomContainer(color: AppColors.primaryElement),
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.home),
+    activeIcon: Icon(
+      Icons.home,
+      color: AppColors.primaryElement,
+    ),
     backgroundColor: AppColors.primaryBackground,
     label: "Home",
   ),
-  BottomNavigationBarItem(
-    icon: _bottomContainer(imagePath: AppImageRes.search),
-    activeIcon: _bottomContainer(
-      imagePath: AppImageRes.search,
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.category),
+    activeIcon: Icon(
+      Icons.category,
       color: AppColors.primaryElement,
     ),
     backgroundColor: AppColors.primaryBackground,
-    label: "Search",
+    label: "Category",
   ),
-  BottomNavigationBarItem(
-    icon: _bottomContainer(imagePath: AppImageRes.message),
-    activeIcon: _bottomContainer(
-      imagePath: AppImageRes.message,
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.sell),
+    activeIcon: Icon(
+      Icons.sell,
       color: AppColors.primaryElement,
     ),
     backgroundColor: AppColors.primaryBackground,
-    label: "Message",
+    label: "Sell",
   ),
-  BottomNavigationBarItem(
-    icon: _bottomContainer(imagePath: AppImageRes.person),
-    activeIcon: _bottomContainer(
-      imagePath: AppImageRes.person,
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.person),
+    activeIcon: Icon(
+      Icons.person,
       color: AppColors.primaryElement,
     ),
     backgroundColor: AppColors.primaryBackground,
@@ -41,34 +43,30 @@ var bottomItems = <BottomNavigationBarItem>[
   ),
 ];
 
-Widget _bottomContainer({
-  double width = 15,
-  double height = 15,
-  String imagePath = AppImageRes.home,
-  Color color = AppColors.primaryFourElementText,
-}) {
-  return SizedBox(
-    width: width.w,
-    height: height.h,
-    child: appImageWithColor(
-      imagePath: imagePath,
-      color: color,
-    ),
-  );
-}
+// Widget _bottomContainer({
+//   double width = 15,
+//   double height = 15,
+//   String imagePath = AppImageRes.home,
+//   Color color = AppColors.primaryFourElementText,
+// }) {
+//   return SizedBox(
+//     width: width.w,
+//     height: height.h,
+//     child: appImageWithColor(
+//       imagePath: imagePath,
+//       color: color,
+//     ),
+//   );
+// }
 
 Widget appScreens(int index) {
   List<Widget> screens = [
     const Home(),
-    const Center(
-      child: Text("Search"),
-    ),
+    const Category(),
     const Center(
       child: Text("Message"),
     ),
-    const Center(
-      child: Text("Profile"),
-    ),
+    const My(),
   ];
   return screens[index];
 }

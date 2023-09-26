@@ -19,8 +19,8 @@ class AppOnboardingPage extends StatelessWidget {
     required this.pageController,
     required this.context,
     this.imagePath = "assets/images/reading.png",
-    this.title = "First See Learning",
-    this.description = "Forget about of paper all knowledge in one learning",
+    this.title = "COMPX576",
+    this.description = "A demo app for paper COMPX576 of University of Waikato",
     this.index = 0,
   });
 

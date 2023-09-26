@@ -39,3 +39,35 @@ Widget appButton({
     ),
   );
 }
+
+Widget appButtonWithColor({
+  String text = "Sign In",
+  double width = 325,
+  double height = 50,
+  void Function()? onPressed,
+  Color bgColor = AppColors.primaryElement,
+  Color textColor = AppColors.primaryBackground,
+}) {
+  return GestureDetector(
+    onTap: onPressed,
+    child: Container(
+      width: width.w,
+      height: height.h,
+      decoration: appBoxShadow(
+          color: bgColor,
+          border: Border.all(
+            color: Colors.transparent,
+          )),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(
+            color: textColor,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+    ),
+  );
+}

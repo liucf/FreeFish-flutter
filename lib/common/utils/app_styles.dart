@@ -18,9 +18,16 @@ class AppTheme {
   );
 }
 
+class AppRadius {
+  static double get button => 6;
 
-//   ThemeData(
-//           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-         
-//         ),
-// }
+  static double get buttonTextFilled => 3;
+
+  static double get card => 10;
+
+  static double get sheet => 20;
+
+  static double get input => 5;
+
+  static double get image => 6;
+}

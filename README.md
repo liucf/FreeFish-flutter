@@ -1,6 +1,6 @@
 # freefish
 
-A new Flutter project.
+A new Flutter project for paper 576.
 
 ## Getting Started
 

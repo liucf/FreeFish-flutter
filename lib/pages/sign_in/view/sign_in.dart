@@ -40,60 +40,87 @@ class _SignInState extends ConsumerState<SignIn> {
           appBar: buildAppbar(),
           body: !appLoader
               ? SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      thirdPartyLogin(),
-                      Center(
-                          child: text14Normal(
-                              text: "Or use your email account to login")),
-                      Container(
-                        padding:
-                            EdgeInsets.only(left: 25.w, right: 25.w, top: 10.h),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            appTextField(
-                              "Email",
-                              controller: _controller.emailController,
-                              iconPath: AppImageRes.user,
-                              hint: "Enter your email address",
-                              func: (value) {
-                                ref
-                                    .read(loginNotifierProvider.notifier)
-                                    .onEmailChange(value);
-                              },
-                            ),
-                            appTextField(
-                              "Password",
-                              controller: _controller.passwordController,
-                              iconPath: AppImageRes.lock,
-                              hint: "Enter your password",
-                              obscureText: true,
-                              func: (value) {
-                                ref
-                                    .read(loginNotifierProvider.notifier)
-                                    .onPasswordChange(value);
-                              },
-                            ),
-                            forgetPassword(),
-                            VxBox().height(100.h).make(),
-                            appButton(
-                                text: "Login",
-                                onPressed: () {
-                                  _controller.handleLogin(ref, loginState);
-                                }),
-                            VxBox().height(20.h).make(),
-                            appButton(
-                                text: "Register",
-                                inversePrimary: true,
-                                onPressed: () {
-                                  Navigator.pushNamed(context, "signUp");
-                                }),
-                          ],
+                  child: Form(
+                    key: _controller.formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        thirdPartyLogin(),
+                        Center(
+                            child: text14Normal(
+                                text: "Or use your email account to login")),
+                        Container(
+                          padding: EdgeInsets.only(
+                              left: 25.w, right: 25.w, top: 10.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              appTextField(
+                                "Email",
+                                controller: _controller.emailController,
+                                iconPath: AppImageRes.user,
+                                hint: "Enter your email address",
+                                func: (value) {
+                                  ref
+                                      .read(loginNotifierProvider.notifier)
+                                      .onEmailChange(value);
+                                },
+                                validateFunc: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter email address';
+                                  }
+                                  if (!RegExp(
+                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(value)) {
+                                    return "Please enter valid email address";
+                                  }
+                                  return null;
+                                },
+                              ),
+                              appTextField(
+                                "Password",
+                                controller: _controller.passwordController,
+                                iconPath: AppImageRes.lock,
+                                hint: "Enter your password",
+                                obscureText: true,
+                                func: (value) {
+                                  ref
+                                      .read(loginNotifierProvider.notifier)
+                                      .onPasswordChange(value);
+                                },
+                                validateFunc: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter password';
+                                  }
+                                  if (value.length < 6) {
+                                    return 'Password must be at least 6 characters';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              forgetPassword(),
+                              VxBox().height(100.h).make(),
+                              appButton(
+                                  text: "Login",
+                                  onPressed: () {
+                                    if ((_controller.formKey.currentState!
+                                            as FormState)
+                                        .validate()) {
+                                      _controller.handleLogin(ref, loginState);
+                                    }
+                                  }),
+                              VxBox().height(20.h).make(),
+                              appButton(
+                                  text: "Register",
+                                  inversePrimary: true,
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, "signUp");
+                                  }),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 )
               : const Center(child: CircularProgressIndicator()),

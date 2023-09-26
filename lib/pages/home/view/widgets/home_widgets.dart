@@ -4,9 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freefish/common/utils/app_colors.dart';
 import 'package:freefish/common/utils/app_image_res.dart';
-import 'package:freefish/common/widgets/image_widgets.dart';
+import 'package:freefish/common/widgets/product_item.dart';
 import 'package:freefish/common/widgets/text_widgets.dart';
-import 'package:freefish/pages/home/provider/home_provider.dart';
+import 'package:freefish/global.dart';
+import 'package:freefish/pages/home/controller/home_controller.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HelloText extends StatelessWidget {
@@ -28,7 +29,8 @@ class UserName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return text24Normal(
-      text: "Michael",
+      // text: "Michael",
+      text: Global.storageService.getUserName(),
       fontWeight: FontWeight.bold,
     );
   }
@@ -44,7 +46,7 @@ class SliderBanner extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          width: 345.w,
+          width: 375.w,
           height: 160.h,
           child: PageView(
             controller: controller,
@@ -82,7 +84,7 @@ Widget _bannerItem({String imagePath = AppImageRes.banner1}) {
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage(imagePath),
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.fill,
       ),
     ),
   );
@@ -92,24 +94,24 @@ AppBar homeAppBar() {
   return AppBar(
     title: Container(
       margin: EdgeInsets.symmetric(horizontal: 7.w),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Icon(Icons.menu),
-          GestureDetector(
-            child: Container(
-              width: 30.w,
-              height: 30.h,
-              margin: EdgeInsets.only(left: 10.w),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.w),
-                image: const DecorationImage(
-                  image: AssetImage(AppImageRes.user),
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
-          ),
+          Icon(Icons.menu),
+          // GestureDetector(
+          //   child: Container(
+          //     width: 30.w,
+          //     height: 30.h,
+          //     margin: EdgeInsets.only(left: 10.w),
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(20.w),
+          //       image: const DecorationImage(
+          //         image: AssetImage(AppImageRes.user),
+          //         fit: BoxFit.fitHeight,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     ),
@@ -143,42 +145,32 @@ class HomeSectionHeader extends StatelessWidget {
 }
 
 class HomePopularGrid extends StatelessWidget {
-  const HomePopularGrid({super.key});
+  final WidgetRef ref;
+  const HomePopularGrid({super.key, required this.ref});
 
   @override
   Widget build(BuildContext context) {
-    // CustomScrollView(
-    //   physics: const ScrollPhysics(),
-    //   shrinkWrap: true,
-    //   slivers: [
-    //     SliverPadding(
-    //         padding: const EdgeInsets.all(20),
-    //         sliver: SliverGrid.count(
-    //           crossAxisCount: 2,
-    //           children: const [
-    //             Text("1"),
-    //             Text("1"),
-    //             Text("1"),
-    //             Text("1"),
-    //             Text("1"),
-    //             Text("1"),
-    //             Text("1"),
-    //           ],
-    //         )),
-    //   ],
-    // ),
-
-    return GridView.builder(
+    final popluarProductState = ref.watch(homePopularProductsProvider);
+    return popluarProductState.when(
+      data: (data) => GridView.builder(
         physics: const ScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 6,
+        itemCount: data.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 40,
-          mainAxisSpacing: 40,
+          crossAxisSpacing: 15,
+          mainAxisSpacing: 15,
         ),
         itemBuilder: (BuildContext context, int index) {
-          return appImage();
-        });
+          return ProductItem(
+            product: data[index],
+          );
+        },
+      ),
+      error: ((error, stackTrace) => const Center(
+            child: Text("Error loading data"),
+          )),
+      loading: (() => const Center(child: CircularProgressIndicator())),
+    );
   }
 }

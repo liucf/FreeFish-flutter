@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:freefish/common/utils/app_constants.dart';
 import 'package:freefish/common/widgets/app_messages.dart';
 import 'package:freefish/global.dart';
@@ -31,8 +32,12 @@ class HttpUtil {
         return handler.next(response); // continue
       },
       onError: (DioException e, handler) {
-        ErrorEntity errorInfo = createErrorEntity(e);
-        onError(errorInfo);
+        // ErrorEntity errorInfo = createErrorEntity(e);
+        // onError(errorInfo);
+        DioException errNext = e.copyWith(
+          error: e.response!.data['message'],
+        );
+        handler.next(errNext);
       },
     ));
   }
@@ -72,7 +77,6 @@ class HttpUtil {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    print("get url: $url");
     Options requestOptions = options ?? Options();
     requestOptions.headers = requestOptions.headers ?? {};
     requestOptions.headers!.addAll(getAuthorizationHeader());
@@ -118,7 +122,9 @@ createErrorEntity(DioException error) {
         case 400:
           return ErrorEntity(code: 400, message: "Bad request");
         case 401:
-          return ErrorEntity(code: 401, message: "Unauthorized");
+          return ErrorEntity(
+              code: 401,
+              message: "Unauthorized: ${error.response!.data['message']}");
         case 403:
           return ErrorEntity(code: 403, message: "Forbidden");
         case 404:
@@ -154,7 +160,10 @@ void onError(ErrorEntity errorEntity) {
       toastInfo(msg: "Bad request");
       break;
     case 401:
-      toastInfo(msg: "Unauthorized");
+      toastInfo(
+          msg: errorEntity.message,
+          backgroundColor: Colors.red,
+          textColor: Colors.white);
       break;
     case 403:
       toastInfo(msg: "Forbidden");

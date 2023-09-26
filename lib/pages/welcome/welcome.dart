@@ -38,17 +38,17 @@ class Welcome extends ConsumerWidget {
                     AppOnboardingPage(
                         pageController: _pageController,
                         imagePath: AppImageRes.man,
-                        title: "Connect With Everyone",
+                        title: "FreeFish",
                         description:
-                            "Always keep in touch with your tutor and friends. Let's get connected",
+                            "FreeFish is a second-hand trading platform like TradeMe",
                         index: 2,
                         context: context),
                     AppOnboardingPage(
                         pageController: _pageController,
                         imagePath: AppImageRes.boy,
-                        title: "Always Fascinated Learning",
+                        title: "Free Easy Quick",
                         description:
-                            "Anywhere, anytime. The time is at your discretion. So study wherever you can",
+                            "Users can list things to sell or browser to buy",
                         index: 3,
                         context: context),
                   ],
