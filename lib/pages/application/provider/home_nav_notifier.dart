@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'home_nav_notifier.g.dart';
 
@@ -11,8 +10,5 @@ class ApplicationNavIndex extends _$ApplicationNavIndex {
 
   void changeIndex(int index) {
     state = index;
-    if (kDebugMode) {
-      print(state);
-    }
   }
 }

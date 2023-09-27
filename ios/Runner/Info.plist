@@ -47,5 +47,18 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please allow me to choose image from your device 🤡</string>
+
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow me to use your camera 🤡</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please allow me to use your microphone 🤡</string>
+
 </dict>
 </plist>

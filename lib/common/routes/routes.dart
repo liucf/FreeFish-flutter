@@ -10,6 +10,7 @@ import 'package:freefish/pages/home/view/home.dart';
 import 'package:freefish/pages/my/view/my_profile.dart';
 import 'package:freefish/pages/product_detail/view/product_detail.dart';
 import 'package:freefish/pages/search/view/search.dart';
+import 'package:freefish/pages/sell/view/sell.dart';
 import 'package:freefish/pages/sign_in/view/sign_in.dart';
 import 'package:freefish/pages/sign_up/view/sign_up.dart';
 import 'package:freefish/pages/welcome/welcome.dart';
@@ -29,6 +30,7 @@ class AppPages {
       RouteEntity(
           path: AppRoutesNames.categoryDetail, page: const CategoryDetail()),
       RouteEntity(path: AppRoutesNames.myProfile, page: const MyProfile()),
+      RouteEntity(path: AppRoutesNames.sell, page: const Sell()),
     ];
   }
 

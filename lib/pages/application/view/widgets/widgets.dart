@@ -3,6 +3,7 @@ import 'package:freefish/common/utils/app_colors.dart';
 import 'package:freefish/pages/category/view/category.dart';
 import 'package:freefish/pages/home/view/home.dart';
 import 'package:freefish/pages/my/view/my.dart';
+import 'package:freefish/pages/sell/view/sell.dart';
 
 var bottomItems = <BottomNavigationBarItem>[
   const BottomNavigationBarItem(
@@ -63,9 +64,7 @@ Widget appScreens(int index) {
   List<Widget> screens = [
     const Home(),
     const Category(),
-    const Center(
-      child: Text("Message"),
-    ),
+    const Sell(),
     const My(),
   ];
   return screens[index];

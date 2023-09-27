@@ -27,6 +27,8 @@ dependencies:
   badges: ^3.1.2
   extended_image: ^8.0.2
   intl: ^0.18.1
+  wechat_assets_picker: ^8.6.3
+  wechat_camera_picker: ^4.0.2
 
 dev_dependencies:
   flutter_test:

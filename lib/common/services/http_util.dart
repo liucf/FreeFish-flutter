@@ -35,7 +35,8 @@ class HttpUtil {
         // ErrorEntity errorInfo = createErrorEntity(e);
         // onError(errorInfo);
         DioException errNext = e.copyWith(
-          error: e.response!.data['message'],
+          // error: e.response!.data['message'],
+          error: e.message
         );
         handler.next(errNext);
       },

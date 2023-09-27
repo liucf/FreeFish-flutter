@@ -9,6 +9,7 @@ class AppRoutesNames {
   static const String search = 'search';
   static const String categoryDetail = 'category_detail';
   static const String myProfile = 'my_profile';
+  static const String sell = 'sell';
 
   static const String settings = '/settings';
   static const String about = '/about';
