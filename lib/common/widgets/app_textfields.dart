@@ -13,6 +13,7 @@ Widget appTextField(
   bool obscureText = false,
   Function(String value)? func,
   Function(String value)? validateFunc,
+  BuildContext? context,
 }) {
   return Container(
     margin: EdgeInsets.only(top: 20.h),
@@ -50,7 +51,10 @@ Widget appTextField(
                         maxLines: 1,
                         autocorrect: false,
                         obscureText: obscureText,
-                      )
+                        style: const TextStyle(
+                          color: AppColors.primaryText,
+                          fontSize: 14,
+                        ))
                     : TextField(
                         onChanged: (value) => func!(value),
                         controller: controller,

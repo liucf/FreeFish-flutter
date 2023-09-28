@@ -29,10 +29,15 @@ class AppOnboardingPage extends StatelessWidget {
     return Column(
       children: [
         Image.asset(imagePath),
-        VxBox(child: text24Normal(text: title)).margin(Vx.mV12).make(),
+        VxBox(
+            child: text24Normal(
+          text: title,
+          color: Theme.of(context).colorScheme.primary,
+        )).margin(Vx.mV12).make(),
         VxBox(
           child: text16Normal(
             text: description,
+            color: Theme.of(context).colorScheme.primary,
           ),
         ).margin(Vx.mV12).padding(Vx.mH32).make(),
         _nextButton(index, pageController, context),

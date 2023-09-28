@@ -16,7 +16,7 @@ class My extends StatelessWidget {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          appBar: buildAppbar(title: "My account"),
+          appBar: buildAppbar(title: "My account", context: context),
           body: SizedBox(
             child: Column(
               children: [

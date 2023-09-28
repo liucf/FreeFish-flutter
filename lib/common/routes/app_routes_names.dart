@@ -7,8 +7,10 @@ class AppRoutesNames {
   static const String productDetail = 'product_detail';
   static const String checkout = 'checkout';
   static const String search = 'search';
+  static const String category = 'category';
   static const String categoryDetail = 'category_detail';
   static const String myProfile = 'my_profile';
+  static const String my = 'my';
   static const String sell = 'sell';
 
   static const String settings = '/settings';

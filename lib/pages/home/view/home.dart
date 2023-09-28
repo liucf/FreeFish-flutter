@@ -26,7 +26,7 @@ class _HomeState extends ConsumerState<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       // appBar: homeAppBar(),
       body: RefreshIndicator(
         child: Padding(

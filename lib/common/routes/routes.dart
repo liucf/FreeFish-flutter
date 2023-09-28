@@ -7,6 +7,7 @@ import 'package:freefish/pages/application/view/application.dart';
 import 'package:freefish/pages/category_detail/view/category_detail.dart';
 import 'package:freefish/pages/checkout/view/checkout.dart';
 import 'package:freefish/pages/home/view/home.dart';
+import 'package:freefish/pages/my/view/my.dart';
 import 'package:freefish/pages/my/view/my_profile.dart';
 import 'package:freefish/pages/product_detail/view/product_detail.dart';
 import 'package:freefish/pages/search/view/search.dart';
@@ -14,6 +15,7 @@ import 'package:freefish/pages/sell/view/sell.dart';
 import 'package:freefish/pages/sign_in/view/sign_in.dart';
 import 'package:freefish/pages/sign_up/view/sign_up.dart';
 import 'package:freefish/pages/welcome/welcome.dart';
+import 'package:freefish/pages/category/view/category.dart' as category_screen;
 
 class AppPages {
   static List<RouteEntity> routes() {
@@ -29,8 +31,12 @@ class AppPages {
       RouteEntity(path: AppRoutesNames.search, page: const Search()),
       RouteEntity(
           path: AppRoutesNames.categoryDetail, page: const CategoryDetail()),
+      RouteEntity(
+          path: AppRoutesNames.category,
+          page: const category_screen.Category()),
       RouteEntity(path: AppRoutesNames.myProfile, page: const MyProfile()),
       RouteEntity(path: AppRoutesNames.sell, page: const Sell()),
+      RouteEntity(path: AppRoutesNames.my, page: const My()),
     ];
   }
 

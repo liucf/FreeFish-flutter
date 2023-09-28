@@ -38,12 +38,12 @@ final homeUserProfileProvider =
 
 typedef _$HomeUserProfile = AsyncNotifier<UserProfileModel>;
 String _$homePopularProductsHash() =>
-    r'1e48e6c702e5a7f28a95a634050ab40ada72a3a4';
+    r'26a4cb62b958ced83570261e830784674000d375';
 
 /// See also [HomePopularProducts].
 @ProviderFor(HomePopularProducts)
-final homePopularProductsProvider =
-    AsyncNotifierProvider<HomePopularProducts, List<ProductModel>>.internal(
+final homePopularProductsProvider = AutoDisposeAsyncNotifierProvider<
+    HomePopularProducts, List<ProductModel>>.internal(
   HomePopularProducts.new,
   name: r'homePopularProductsProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -53,6 +53,6 @@ final homePopularProductsProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$HomePopularProducts = AsyncNotifier<List<ProductModel>>;
+typedef _$HomePopularProducts = AutoDisposeAsyncNotifier<List<ProductModel>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

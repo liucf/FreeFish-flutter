@@ -11,8 +11,11 @@ class Application extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     int index = ref.watch(applicationNavIndexProvider);
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.background,
       child: SafeArea(
+        bottom: false,
+
+        // top: false,
         child: Scaffold(
           body: appScreens(index),
           bottomNavigationBar: BottomNavigationBar(

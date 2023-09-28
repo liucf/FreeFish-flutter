@@ -16,7 +16,7 @@ class _CategoryState extends ConsumerState<Category> {
   Widget build(BuildContext context) {
     final categorylistState = ref.watch(categoryListProvider);
     return Scaffold(
-      appBar: buildAppbar(title: "Category"),
+      appBar: buildAppbar(title: "Category", context: context),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(

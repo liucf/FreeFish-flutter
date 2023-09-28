@@ -14,6 +14,42 @@ PODS:
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - Stripe (23.12.0):
+    - StripeApplePay (= 23.12.0)
+    - StripeCore (= 23.12.0)
+    - StripePayments (= 23.12.0)
+    - StripePaymentsUI (= 23.12.0)
+    - StripeUICore (= 23.12.0)
+  - stripe_ios (0.0.1):
+    - Flutter
+    - Stripe (~> 23.12.0)
+    - StripeApplePay (~> 23.12.0)
+    - StripeFinancialConnections (~> 23.12.0)
+    - StripePayments (~> 23.12.0)
+    - StripePaymentSheet (~> 23.12.0)
+    - StripePaymentsUI (~> 23.12.0)
+  - StripeApplePay (23.12.0):
+    - StripeCore (= 23.12.0)
+  - StripeCore (23.12.0)
+  - StripeFinancialConnections (23.12.0):
+    - StripeCore (= 23.12.0)
+    - StripeUICore (= 23.12.0)
+  - StripePayments (23.12.0):
+    - StripeCore (= 23.12.0)
+    - StripePayments/Stripe3DS2 (= 23.12.0)
+  - StripePayments/Stripe3DS2 (23.12.0):
+    - StripeCore (= 23.12.0)
+  - StripePaymentSheet (23.12.0):
+    - StripeApplePay (= 23.12.0)
+    - StripeCore (= 23.12.0)
+    - StripePayments (= 23.12.0)
+    - StripePaymentsUI (= 23.12.0)
+  - StripePaymentsUI (23.12.0):
+    - StripeCore (= 23.12.0)
+    - StripePayments (= 23.12.0)
+    - StripeUICore (= 23.12.0)
+  - StripeUICore (23.12.0):
+    - StripeCore (= 23.12.0)
   - Toast (4.0.0)
   - video_player_avfoundation (0.0.1):
     - Flutter
@@ -25,10 +61,19 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
+  - stripe_ios (from `.symlinks/plugins/stripe_ios/ios`)
   - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
 
 SPEC REPOS:
   trunk:
+    - Stripe
+    - StripeApplePay
+    - StripeCore
+    - StripeFinancialConnections
+    - StripePayments
+    - StripePaymentSheet
+    - StripePaymentsUI
+    - StripeUICore
     - Toast
 
 EXTERNAL SOURCES:
@@ -44,6 +89,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/photo_manager/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
+  stripe_ios:
+    :path: ".symlinks/plugins/stripe_ios/ios"
   video_player_avfoundation:
     :path: ".symlinks/plugins/video_player_avfoundation/ios"
 
@@ -54,9 +101,18 @@ SPEC CHECKSUMS:
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   photo_manager: 4f6810b7dfc4feb03b461ac1a70dacf91fba7604
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
+  Stripe: 15fad81ffb8d553d77ff504a6d50d47b9028bed0
+  stripe_ios: 872ce75ce051b4070d061a185c8b7b67323c9f30
+  StripeApplePay: 871274acfa7a96650ea8a697c288c54b8288fb6e
+  StripeCore: 7b08fd286e8f8f5336eb725bc7ed1d2a4705cdc4
+  StripeFinancialConnections: 561831507db3d383be3933a3979f1b9d287a15e7
+  StripePayments: 081e01e73762852ccf3e662202d5dd4107634058
+  StripePaymentSheet: ec04397e9223c86a87be8b348cdbcf2075dd7a16
+  StripePaymentsUI: 3dae7fed9b148b2749dff622ece45f9b441b88ce
+  StripeUICore: 4a76fa59cab679e1b2fe1ad37d6b08c5bf2ada54
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   video_player_avfoundation: 81e49bb3d9fb63dccf9fa0f6d877dc3ddbeac126
 
-PODFILE CHECKSUM: 6b9eb94e9f98a329f2ef624b852a6e42d090af2b
+PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5
 
 COCOAPODS: 1.11.3

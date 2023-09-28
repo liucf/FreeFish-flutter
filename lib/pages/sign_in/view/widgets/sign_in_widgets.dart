@@ -96,7 +96,7 @@ Widget forgetPassword() {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        textUnderline(text: "Forget Password?"),
+        textUnderline(text: "Forget Password?",),
       ],
     ),
   );

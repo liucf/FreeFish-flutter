@@ -16,59 +16,57 @@ class Welcome extends ConsumerWidget {
 
     return Container(
       color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          body: Container(
-            margin: const EdgeInsets.only(top: 30),
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                PageView(
-                  controller: _pageController,
-                  onPageChanged: (value) {
-                    ref.read(indexDotProvider.notifier).changeIndex(value);
-                  },
-                  children: [
-                    AppOnboardingPage(
-                        pageController: _pageController,
-                        imagePath: AppImageRes.reading,
-                        index: 1,
-                        context: context),
-                    AppOnboardingPage(
-                        pageController: _pageController,
-                        imagePath: AppImageRes.man,
-                        title: "FreeFish",
-                        description:
-                            "FreeFish is a second-hand trading platform like TradeMe",
-                        index: 2,
-                        context: context),
-                    AppOnboardingPage(
-                        pageController: _pageController,
-                        imagePath: AppImageRes.boy,
-                        title: "Free Easy Quick",
-                        description:
-                            "Users can list things to sell or browser to buy",
-                        index: 3,
-                        context: context),
-                  ],
-                ),
-                Positioned(
-                  bottom: 50,
-                  child: DotsIndicator(
-                      position: dotIndex,
-                      dotsCount: 3,
-                      decorator: DotsDecorator(
-                        activeColor: Colors.deepPurple,
-                        size: const Size.square(9.0),
-                        activeSize: const Size(18.0, 9.0),
-                        activeShape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                      )),
-                ),
-              ],
-            ),
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: Container(
+          margin: const EdgeInsets.only(top: 30),
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              PageView(
+                controller: _pageController,
+                onPageChanged: (value) {
+                  ref.read(indexDotProvider.notifier).changeIndex(value);
+                },
+                children: [
+                  AppOnboardingPage(
+                      pageController: _pageController,
+                      imagePath: AppImageRes.reading,
+                      index: 1,
+                      context: context),
+                  AppOnboardingPage(
+                      pageController: _pageController,
+                      imagePath: AppImageRes.man,
+                      title: "FreeFish",
+                      description:
+                          "FreeFish is a second-hand trading platform like TradeMe",
+                      index: 2,
+                      context: context),
+                  AppOnboardingPage(
+                      pageController: _pageController,
+                      imagePath: AppImageRes.boy,
+                      title: "Free Easy Quick",
+                      description:
+                          "Users can list things to sell or browser to buy",
+                      index: 3,
+                      context: context),
+                ],
+              ),
+              Positioned(
+                bottom: 50,
+                child: DotsIndicator(
+                    position: dotIndex,
+                    dotsCount: 3,
+                    decorator: DotsDecorator(
+                      activeColor: Colors.deepPurple,
+                      size: const Size.square(9.0),
+                      activeSize: const Size(18.0, 9.0),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    )),
+              ),
+            ],
           ),
         ),
       ),

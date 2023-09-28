@@ -19,7 +19,7 @@ class HomeUserProfile extends _$HomeUserProfile {
   FutureOr<UserProfileModel> build() => Global.storageService.getUserProfile();
 }
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: false)
 class HomePopularProducts extends _$HomePopularProducts {
   Future<List<ProductModel>> fetchPopularProducts() async =>
       await ProductApi.getPopularProducts();

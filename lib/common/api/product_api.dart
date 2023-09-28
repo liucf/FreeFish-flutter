@@ -72,4 +72,20 @@ class ProductApi {
     await HttpUtil().post("/api/sell", data: formData);
     return true;
   }
+
+  static Future<void> buy({
+    required int product,
+    required double amount,
+    required String email,
+    required String mobilephone,
+    required String address,
+  }) {
+    return HttpUtil().post("/api/app_buy", data: {
+      "product": product,
+      "amount": amount,
+      "email": email,
+      "mobilephone": mobilephone,
+      "address": address,
+    });
+  }
 }
